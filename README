@@ -1,0 +1,17 @@
+OPENi Client Application
+========================
+
+Client application demonstrates OPENi Auth Server features.
+
+## Configuration
+
+1. Configure database: /config/database.js
+2. Configure client id and secret: /config/auth.js
+
+## Installation
+
+> # Install modules
+> npm install
+>
+> # Start application
+> node server.js

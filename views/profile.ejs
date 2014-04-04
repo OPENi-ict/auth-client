@@ -1,0 +1,230 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>OPENi Authentication</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<div class="row">
+
+		<!-- OPENi -->
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> OpenID Local OPENi</h3>
+
+				<% if (user.openidlocalopeni.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.openidlocalopeni.id %><br>
+						<strong>token</strong>: <%= user.openidlocalopeni.token %><br>
+						<strong>email</strong>: <%= user.openidlocalopeni.email %><br>
+						<strong>name</strong>: <%= user.openidlocalopeni.name %>
+					</p>
+
+					<a href="/unlink/google" class="btn btn-default">Unlink</a>
+				<% } else { %>
+					<a href="/connect/google" class="btn btn-default">Connect OPENI</a>
+				<% } %>
+
+			</div>
+		</div>
+
+		<!-- LOCAL INFORMATION -->
+		<!--
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> Local</h3>
+
+				<% if (user.local.email) { %>
+					<p>
+						<strong>id</strong>: <%= user._id %><br>
+						<strong>email</strong>: <%= user.local.email %><br>
+						<strong>password</strong>: <%= user.local.password %>
+					</p>
+					
+					<a href="/unlink/local" class="btn btn-default">Unlink</a>
+				<% } else { %>
+					<a href="/connect/local" class="btn btn-default">Connect Local</a>
+				<% } %>
+
+			</div>
+		</div>
+		-->
+
+		<!-- FACEBOOK INFORMATION -->
+		<div class="col-sm-6">
+			<div class="well">
+				<h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+
+				<!-- check if the user has this token (is the user authenticated with this social account) -->
+				<% if (user.facebook.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.facebook.id %><br>
+						<strong>token</strong>: <%= user.facebook.token %><br>
+						<strong>email</strong>: <%= user.facebook.email %><br>
+						<strong>name</strong>: <%= user.facebook.name %><br>
+					</p>
+
+					<a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
+				<% } else { %>
+					<a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
+				<% } %>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<!-- TWITTER INFORMATION -->
+		<div class="col-sm-6">
+			<div class="well">
+				<h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
+
+				<!-- check if the user has this token (is the user authenticated with this social account) -->
+				<% if (user.twitter.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.twitter.id %><br>
+						<strong>token</strong>: <%= user.twitter.token %><br>
+						<strong>display name</strong>: <%= user.twitter.displayName %><br>
+						<strong>username</strong>: <%= user.twitter.username %>
+					</p>
+
+					<a href="/unlink/twitter" class="btn btn-info">Unlink</a>
+				<% } else { %>
+					<a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
+				<% } %>
+
+			</div>
+		</div>
+
+		<!-- GOOGLE INFORMATION -->
+		<div class="col-sm-6">
+			<div class="well">
+				<h3 class="text-danger"><span class="fa fa-google-plus"></span> Google+</h3>
+
+				<!-- check if the user has this token (is the user authenticated with this social account) -->
+				<% if (user.google.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.google.id %><br>
+						<strong>token</strong>: <%= user.google.token %><br>
+						<strong>email</strong>: <%= user.google.email %><br>
+						<strong>name</strong>: <%= user.google.name %>
+					</p>
+
+					<a href="/unlink/google" class="btn btn-danger">Unlink</a>
+				<% } else { %>
+					<a href="/connect/google" class="btn btn-danger">Connect Google</a>
+				<% } %>
+
+			</div>
+		</div>
+
+		<!-- OPENID GOOGLE -->
+		<!--
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> OpenID Google</h3>
+
+				<% if (user.openidgoogle.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.openidgoogle.id %><br>
+						<strong>token</strong>: <%= user.openidgoogle.token %><br>
+						<strong>email</strong>: <%= user.openidgoogle.email %><br>
+						<strong>name</strong>: <%= user.openidgoogle.name %>
+					</p>
+
+					<a href="/unlink/google" class="btn btn-danger">Unlink</a>
+				<% } else { %>
+					<a href="/connect/google" class="btn btn-danger">Connect Google</a>
+				<% } %>
+
+			</div>
+		</div>
+		-->
+
+		<!-- OPENID HEROKU -->
+		<!--
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> OpenID Heroku</h3>
+
+				<% if (user.openidheroku.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.openidheroku.id %><br>
+						<strong>token</strong>: <%= user.openidheroku.token %><br>
+						<strong>email</strong>: <%= user.openidheroku.email %><br>
+						<strong>name</strong>: <%= user.openidheroku.name %>
+					</p>
+
+					<a href="/unlink/google" class="btn btn-danger">Unlink</a>
+				<% } else { %>
+					<a href="/connect/google" class="btn btn-danger">Connect Heroku</a>
+				<% } %>
+
+			</div>
+		</div>
+		-->
+
+		<!-- OPENID LOCAL OPNEi -->
+		<!--
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> OpenID Local OPENi</h3>
+
+				<% if (user.openidlocalopeni.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.openidlocalopeni.id %><br>
+						<strong>token</strong>: <%= user.openidlocalopeni.token %><br>
+						<strong>email</strong>: <%= user.openidlocalopeni.email %><br>
+						<strong>name</strong>: <%= user.openidlocalopeni.name %>
+					</p>
+
+					<a href="/unlink/google" class="btn btn-default">Unlink</a>
+				<% } else { %>
+					<a href="/connect/google" class="btn btn-default">Connect OPENI</a>
+				<% } %>
+
+			</div>
+		</div>
+		-->
+
+		<!-- OPENID OPENi -->
+		<!--
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> OpenID OPEN</h3>
+
+				<% if (user.openidopeni.token) { %>
+					<p>
+						<strong>id</strong>: <%= user.openidopeni.id %><br>
+						<strong>token</strong>: <%= user.openidopeni.token %><br>
+						<strong>email</strong>: <%= user.openidopeni.email %><br>
+						<strong>name</strong>: <%= user.openidopeni.name %>
+					</p>
+
+					<a href="/unlink/google" class="btn btn-default">Unlink</a>
+				<% } else { %>
+					<a href="/connect/google" class="btn btn-default">Connect OPENi</a>
+				<% } %>
+
+			</div>
+		</div>
+		-->
+	</div>
+
+
+</div>
+</body>
+</html>
